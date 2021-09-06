@@ -143,8 +143,8 @@ def print_classification_report(prediction_dataloader,model,LABELS):
             
     print(classification_report(true_labels_flat, pred_labels, digits=4))
     print()
-    print(accuracy_score)
-    return accuracy_score
+    print(accuracy_score(true_labels_flat, pred_labels))
+    return accuracy_score(true_labels_flat, pred_labels)
 
 
 import torch
