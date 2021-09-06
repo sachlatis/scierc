@@ -3,7 +3,7 @@ import sys
 import torch
 import getopt
 from torch.utils.data import TensorDataset, DataLoader, RandomSampler, SequentialSampler
-from transformers import BertTokenizer, BertModel ,BertForSequenceClassification
+from transformers import BertTokenizer, BertModel ,BertForSequenceClassification,AutoTokenizer
 from Utils.utils import *
 from Utils.finetune import *
 
@@ -48,7 +48,8 @@ def main(method, cfg):
         sentences = df.text.values
         labels = df.label.values
 
-        tokenizer = BertTokenizer.from_pretrained('bert-base-uncased', do_lower_case=True)
+        #tokenizer = BertTokenizer.from_pretrained('bert-base-uncased', do_lower_case=True)
+        tokenizer = BertTokenizer.from_pretrained(cfg['data']['finetuned_model'], do_lower_case=True)
         test_inputs, test_masks = get_encoded_data(tokenizer, sentences)
 
         # convert to torch tensors
