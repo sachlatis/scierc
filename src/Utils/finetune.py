@@ -109,7 +109,7 @@ def save_model(model,cfg,tokenizer):
     print("GG WP")
     '''
     output_dir = cfg['finetunedmodel']['vocab']
-	if not os.path.exists(output_dir):
+    if not os.path.exists(output_dir):
         os.makedirs(output_dir)
     model_to_save = (
         model.module if hasattr(model, "module") else model
