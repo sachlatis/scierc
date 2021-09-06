@@ -7,14 +7,14 @@ def _extract_df(abs_key, abstract):
     # NUM_LABELS = len(LABELS)
     # COLUMNS = {'abstract', 'sentence', 'label'}
     rows = []
-    for sentence in abstract:
+    for sentence in text:
         try:
-            label, sentence = sentence.split('\t')
+            label, text =text.split('\t')
         except ValueError:
             # line just contains ''
             continue
         label = LABELS[label.lower()]
-        row = {'text': label, 'label': sentence, 'metadata': abs_key}
+        row = {'text': text, 'label': label, 'metadata': metadata}
         rows.append(row)
     return pd.DataFrame(rows)
 
@@ -33,7 +33,7 @@ def preprocess_data(path):
     dfs = [_extract_df(abs_key, abstract) for abs_key, abstract in txt.items()]
     df = pd.concat(dfs, axis=0)
 
-    df['number_of_words'] = df.sentence.apply(lambda x: len(x.split()))
+    df['number_of_words'] = df.text.apply(lambda x: len(x.split()))
     #filter out sentences which are longer than 78 (99 percentile)
     df = df[(df.number_of_words <= 78)]
     return df
