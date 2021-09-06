@@ -36,7 +36,7 @@ def get_encoded_data(tokenizer,sentences):
 
 
     #padding the data
-    MAX_LEN = 80
+    MAX_LEN = 128
     input_ids = pad_sequences(input_ids, maxlen=MAX_LEN, dtype="long",
                               value=0, truncating="post", padding="post")
 
