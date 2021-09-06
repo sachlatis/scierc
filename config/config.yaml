@@ -1,6 +1,6 @@
 data:
     train : /kaggle/working/scierc/data/train.txt
-    test : /kaggle/working/fscierc/data/test.txt
+    test : /kaggle/working/scierc/data/test.txt
     dev: /kaggle/working/scierc/data/dev.txt
     finetuned_model: /kaggle/working/scierc/model/
 
