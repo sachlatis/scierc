@@ -1,5 +1,7 @@
 import pandas as pd
+import json
 from keras.preprocessing.sequence import pad_sequences
+
 
 def preprocess_data(path):
     df = pd.DataFrame()
