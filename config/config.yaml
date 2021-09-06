@@ -1,13 +1,13 @@
 data:
-    train : /kaggle/working/fine-tune-bert-on-biomed/data/train.txt
-    test : /kaggle/working/fine-tune-bert-on-biomed/data/test.txt
-    dev: /kaggle/working/fine-tune-bert-on-biomed/data/dev.txt
-    finetuned_model: /kaggle/working/fine-tune-bert-on-biomed/model/
+    train : /kaggle/working/scierc/data/train.txt
+    test : /kaggle/working/fscierc/data/test.txt
+    dev: /kaggle/working/scierc/data/dev.txt
+    finetuned_model: /kaggle/working/scierc/model/
 
 finetunedmodel:
-    model : /kaggle/working/fine-tune-bert-on-biomed/model/pytorch_model.bin
-    config: /kaggle/working/fine-tune-bert-on-biomed/model/config.json
-    vocab: /kaggle/working/fine-tune-bert-on-biomed/model/vocab.txt
+    model : /kaggle/working/scierc/model/pytorch_model.bin
+    config: /kaggle/working/scierc/model/config.json
+    vocab: /kaggle/working/scierc/model/vocab.txt
 
 hyperparams:
      learning_rate: 2e-5
