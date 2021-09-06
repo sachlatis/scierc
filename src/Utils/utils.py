@@ -1,41 +1,15 @@
 import pandas as pd
 from keras.preprocessing.sequence import pad_sequences
 
-
-def _extract_df(abs_key, abstract):
-    LABELS = {'used-for': 0, 'feature-of': 1, 'conjunction': 2, 'hyponym-of': 3, 'part-of': 4, 'evaluate-for': 5, 'compare':6 }
-    # NUM_LABELS = len(LABELS)
-    # COLUMNS = {'abstract', 'sentence', 'label'}
-    rows = []
-    for sentence in text:
-        try:
-            label, text =text.split('\t')
-        except ValueError:
-            # line just contains ''
-            continue
-        label = LABELS[label.lower()]
-        row = {'text': text, 'label': label, 'metadata': metadata}
-        rows.append(row)
-    return pd.DataFrame(rows)
-
-
 def preprocess_data(path):
-
+    df = pd.DataFrame()
+    LABELS = {'used-for': 0, 'feature-of': 1, 'conjunction': 2, 'hyponym-of': 3, 'part-of': 4, 'evaluate-for': 5, 'compare':6 }
     with open(path, 'r') as infile:
-        txt = infile.read()
-        # split per abstract
-        txt = txt.split('###')
-        # split lines
-        txt = [abstract.split('\n') for abstract in txt]
-        # collect into dict[abs_key] = list of abs sentences
-        txt = {l[0]: l[1:] for l in txt}
-
-    dfs = [_extract_df(abs_key, abstract) for abs_key, abstract in txt.items()]
-    df = pd.concat(dfs, axis=0)
-
-    df['number_of_words'] = df.text.apply(lambda x: len(x.split()))
-    #filter out sentences which are longer than 78 (99 percentile)
-    df = df[(df.number_of_words <= 78)]
+        for line in infile:
+            line = json.loads(line)
+            line['label'] = LABELS[line['label'].lower()]
+            df = df.append(pd.DataFrame.from_dict(line))
+    df = df.drop(columns=['metadata'])
     return df
 
 def get_encoded_data(tokenizer,sentences):
