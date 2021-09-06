@@ -19,7 +19,7 @@ def main(method, cfg):
         # get all the training data for preparaing the label set and store the labels for future use
         df = preprocess_data(cfg['data']['train'])
 
-        sentences = df.sentence.values
+        sentences = df.text.values
         labels = df.label.values
 
         tokenizer = BertTokenizer.from_pretrained('bert-base-uncased', do_lower_case=True)
@@ -45,7 +45,7 @@ def main(method, cfg):
 
         # load the labels from training data:label is key
         df = preprocess_data(cfg['data']['test'])
-        sentences = df.sentence.values
+        sentences = df.text.values
         labels = df.label.values
 
         tokenizer = BertTokenizer.from_pretrained('bert-base-uncased', do_lower_case=True)
