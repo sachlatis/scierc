@@ -98,6 +98,7 @@ def finetunemodel(model,scheduler,epochs,train_dataloader,optimizer):
 
 
 def save_model(model,cfg,tokenizer):
+    '''
     model_to_save = model.module if hasattr(model, 'module') else model  # Only save the model it-self
     OUTPUT_DIR = cfg['finetunedmodel']['vocab']
     output_model_file = cfg['finetunedmodel']['model']  # os.path.join(OUTPUT_DIR, WEIGHTS_NAME)
@@ -105,4 +106,17 @@ def save_model(model,cfg,tokenizer):
     torch.save(model_to_save.state_dict(), output_model_file)
     model_to_save.config.to_json_file(output_config_file)
     tokenizer.save_vocabulary(OUTPUT_DIR)
+    print("GG WP")
+    '''
+    output_dir = cfg['finetunedmodel']['vocab']
+	if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
+    model_to_save = (
+        model.module if hasattr(model, "module") else model
+    )
+    model_to_save.save_pretrained(output_dir)
+    tokenizer.save_pretrained(output_dir)
+    torch.save(args, os.path.join(output_dir, "training_args.bin"))
+    torch.save(optimizer.state_dict(), os.path.join(output_dir, "optimizer.pt"))
+    torch.save(scheduler.state_dict(), os.path.join(output_dir, "scheduler.pt"))
     print("GG WP")
