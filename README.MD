@@ -12,9 +12,9 @@ If you want to run repo use scierc.ipynb
 
 ---
 Acc. Scores:
-1epoch -> 0.7679
 
-3epoch -> 0.8706
+*1 epoch -> 0.7679
+*3 epoch -> 0.8706
 
 
 
