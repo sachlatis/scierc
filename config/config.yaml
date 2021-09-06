@@ -12,5 +12,5 @@ finetunedmodel:
 hyperparams:
      learning_rate: 2e-5
      epsilon: 1e-8
-     epochs: 3
+     epochs: 1
      batch_size: 64
