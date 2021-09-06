@@ -100,6 +100,7 @@ def print_classification_report(prediction_dataloader,model,LABELS):
     # Predict
     for batch in prediction_dataloader:
         # Add batch to GPU
+        device = torch.device("cuda")
         batch = tuple(t.to(device) for t in batch)
 
         # Unpack the inputs from our dataloader
@@ -109,8 +110,8 @@ def print_classification_report(prediction_dataloader,model,LABELS):
         # speeding up prediction
         with torch.no_grad():
             # Forward pass, calculate logit predictions
-            outputs = model(b_input_ids, token_type_ids=None,
-                            attention_mask=b_input_mask)
+            outputs = model(b_input_ids.to(device), token_type_ids=None,
+                            attention_mask=b_input_mask.to(device))
         logits = outputs[0]
         # Move logits and labels to CPU
         logits = logits.detach().cpu().numpy()
