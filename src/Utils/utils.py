@@ -2,16 +2,15 @@ import pandas as pd
 import json
 from keras.preprocessing.sequence import pad_sequences
 
-
+# thats change acordingly to your dataset 
 def preprocess_data(path):
     df = pd.DataFrame()
     LABELS = {'used-for': 0, 'feature-of': 1, 'conjunction': 2, 'hyponym-of': 3, 'part-of': 4, 'evaluate-for': 5, 'compare':6 }
     with open(path, 'r') as infile:
-        for line in infile:
-            line = json.loads(line)
-            line['label'] = LABELS[line['label'].lower()]
-            df = df.append(pd.DataFrame.from_dict(line))
-    df = df.drop(columns=['metadata'])
+        for i, line in enumerate(infile):
+          line = json.loads(line)
+          line['label'] = LABELS[line['label'].lower()]
+          df = df.append(pd.DataFrame({'text': line['text'], 'label': line['label']}, index=[i]) )
     return df
 
 def get_encoded_data(tokenizer,sentences):
