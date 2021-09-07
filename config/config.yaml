@@ -7,7 +7,7 @@ data:
 finetunedmodel:
     model : /kaggle/working/scierc/model/pytorch_model.bin
     config: /kaggle/working/scierc/model/config.json
-    vocab: /kaggle/working/scierc/model/vocab.txt
+    vocab: /kaggle/working/scierc/model/
 
 hyperparams:
      learning_rate: 2e-5
