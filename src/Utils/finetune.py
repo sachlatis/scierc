@@ -110,7 +110,8 @@ def save_model(model,cfg,tokenizer):
     print("GG WP")
     '''
     model_to_save = model.module if hasattr(model, 'module') else model  # Only save the model it-self
-    OUTPUT_DIR = cfg['finetunedmodel']['vocab']
+    #OUTPUT_DIR = cfg['finetunedmodel']['vocab']
+    OUTPUT_DIR = cfg['data']['finetuned_model']
     output_model_file = cfg['finetunedmodel']['model']  # os.path.join(OUTPUT_DIR, WEIGHTS_NAME)
     output_config_file =  cfg['finetunedmodel']['config']  # os.path.join(OUTPUT_DIR, CONFIG_NAME)
     torch.save(model_to_save.state_dict(), output_model_file)
@@ -130,3 +131,5 @@ def save_model(model,cfg,tokenizer):
     torch.save(scheduler.state_dict(), os.path.join(output_dir, "scheduler.pt"))
     print("GG WP")
     '''
+    
+    
