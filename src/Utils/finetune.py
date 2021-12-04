@@ -42,7 +42,7 @@ def finetunemodel(model,scheduler,epochs,train_dataloader,optimizer):
         device = torch.device("cpu")
     # This training code is based on the `run_glue.py` script here:
     # https://github.com/huggingface/transformers/blob/5bfcd0485ece086ebcbed2d008813037968a9e58/examples/run_glue.py#L128
-    seed_val = 17
+    seed_val = 17 # 42 done
     random.seed(seed_val)
     np.random.seed(seed_val)
     torch.manual_seed(seed_val)
