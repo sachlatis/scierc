@@ -13,4 +13,4 @@ hyperparams:
      learning_rate: 2e-5
      epsilon: 1e-8
      epochs: 3
-     batch_size: 32 #prin 64
+     batch_size: 32 #old one: 64
