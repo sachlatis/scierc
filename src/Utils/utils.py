@@ -2,7 +2,7 @@ import pandas as pd
 import json
 from keras.preprocessing.sequence import pad_sequences
 
-# thats change acordingly to your dataset 
+# that change acordingly to your dataset
 def preprocess_data(path):
     df = pd.DataFrame()
     LABELS = {'used-for': 0, 'feature-of': 1, 'conjunction': 2, 'hyponym-of': 3, 'part-of': 4, 'evaluate-for': 5, 'compare':6 }
